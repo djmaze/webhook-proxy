@@ -8,7 +8,7 @@ class HttpAction(Action):
     def __init__(self, target, method='POST', headers=None, body=None, fail_on_error=False,
                  output='HTTP {{ response.status_code }} : {{ response.content }}'):
 
-        self.target = target
+        self.target = self._render_with_template(target)
         self.method = method
         self.headers = headers
         self.body = body
